@@ -9,16 +9,15 @@ var escribeTras2Segundos = function(texto, callback){
 	}, 500); //Cambiamos a 500ms para que sea más rápido, pero para que sean 2 segundos son 2000
 };
 
-function serie(arr, fn){
+function serie(arr, fun){
 
-	fun("texto" + i, function(){
-		i--;
-		if(i==0){
-			console.log('fin');
-			return;
-		}
-		serie(i, fun);
-		
+	if(arr.length == 0){
+		console.log("fin");
+		return;
+	}
+
+	fun(arr.shift(), function(){
+		serie(arr, fun);
 	});
 }
 
