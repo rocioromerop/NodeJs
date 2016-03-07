@@ -1,0 +1,14 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "principio de node.js",
+  "main": "servidor_basico.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rocio Romero",
+  "license": "ISC",
+  "dependencies": {
+    "chance": "^1.0.1"
+  }
+}
