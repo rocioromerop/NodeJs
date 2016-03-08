@@ -42,3 +42,20 @@ console.log(smith instanceof Agente);
 console.log(smith instanceof Persona	);
 console.log(smith instanceof Object);
 console.log(luis instanceof Agente);
+
+// Ejercicio: Crear un objeto que herede de persona y también de un eventEmitter 
+var EventEmitter = require('events').EventEmitter;
+var extend = require('util')._extend;
+
+Persona.prototype = extend(Persona.prototype, EventEmitter.prototype);
+
+var p=new Persona('p');
+
+p.on('prueba', function(data){
+	console.log('ha saltado el evento', data);
+});
+
+p.emit('prueba', {payload: 55000})
+process.on('exit', function(){
+	p.emit('prueba', 'el programa termina!');
+})
