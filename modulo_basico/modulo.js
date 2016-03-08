@@ -6,10 +6,6 @@ var objeto = {
 	}
 };
 
-module.exports = {
-	objeto1: objeto,
-	objeto2: {
-		nada: function(){console.log('nadando voy');}
-	}
+//module.exports = objeto;
 
-}; //caracteriza esto como un módulo
+exports.objeto = objeto; //export con nombre

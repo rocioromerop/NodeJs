@@ -2,9 +2,6 @@
 
 var modulo=require('./modulo.js');
 
-//modulo.vuela();
+modulo.objeto.vuela();
 
 console.log(modulo);
-
-modulo.objeto1.vuela();
-modulo.objeto2.nada();
