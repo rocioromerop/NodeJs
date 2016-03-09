@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var users = require('../models/userModel');
-
-console.log('users: ', users); // para ver que lo hago bien
+var user = require('../models/userModel');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -11,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/form', function(req, res, next) {
-  res.render('user_form', {users : users}); // le paso un objeto con una propiedad que dentro tiene mi objeto que le paso 
+  res.render('user_form', {users : user.getUsers()}); // le paso un objeto con una propiedad que dentro tiene mi objeto que le paso 
 });
 
 

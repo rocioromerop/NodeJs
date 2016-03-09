@@ -7,6 +7,10 @@ var users = [{name : 'Smith', age: 30},
 			{name: 'Jones', age: 22}
 ];
 
-module.exports = users; 
+var user = {
+	getUsers: function(){
+		return users;
+	}
+};
 
-//YA TENGO UN MODELO :)
+module.exports = user; 
