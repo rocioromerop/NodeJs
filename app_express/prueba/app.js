@@ -7,8 +7,18 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var admin = require('./routes/admin'); //aquí lo que hago es cargarlo //en principio si no exporto nada, no tiene nada
 
 var app = express();
+
+app.use(function(req, res, next){
+  //console.log(req.query);
+  var algo = req.query.algo || "";
+  req.algo=algo;
+  //res.send('soy el primero!');
+  next();
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,10 +30,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); //Para archivos estáticos
+console.log("dir name: " + __dirname);
+
+
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/admin', admin); //donde /nombre puedo poner lo que quiera, no tiene que ser '/'
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -7,12 +7,13 @@
 var app = require('../app');
 var debug = require('debug')('prueba:server');
 var http = require('http');
+//Aquí pondríamos también https
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3000'); //pone el puerto usando nomrmalizePort (que está más abajo)
 app.set('port', port);
 
 /**
@@ -86,5 +87,6 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  //debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }
