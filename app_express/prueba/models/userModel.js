@@ -8,8 +8,11 @@ var users = [{name : 'Smith', age: 30},
 ];
 
 var user = {
-	getUsers: function(){
-		return users;
+	getUsers: function(cb){ //cb=callback
+		//imaginamos que lee un fichero
+		var usuariosLeidos = users;
+		cb(null, users); //no return sino callback, estoy en asincrono
+		//return users;
 	}
 };
 
