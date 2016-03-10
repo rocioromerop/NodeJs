@@ -16,11 +16,11 @@ var userSchema = mongoose.Schema({
 });
 
 // al esquema le metemos un estático
-userSchema.statics.list = function(cb){
+userSchema.statics.list = function(sort,  cb){
 	// preparamos la query sin ejecutarla
 	var query = User.find({});
 	// añadimos más parámetros a la query
-	query.sort('name');
+	query.sort(sort);
 
 	// se ejecuta la query:
 	query.exec(function(err, rows){

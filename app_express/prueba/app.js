@@ -5,9 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Modelos
+require('./models/userModel'); //quito el var user = require('...'); porque no me hace falta, sólo hago que empiece mongoose, la variable user no la voy a usar
+
+// Rutas de web
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin'); //aquí lo que hago es cargarlo //en principio si no exporto nada, no tiene nada
+
+//Rutas de API V1
+var apiUsers = require('./routes/api/v1/users');
 
 var app = express();
 
@@ -34,11 +41,13 @@ app.use(express.static(path.join(__dirname, 'public'))); //Para archivos estáti
 console.log("dir name: " + __dirname);
 
 
-
+// Rutas de web
 app.use('/', routes);
 app.use('/users', users);
 app.use('/admin', admin); //donde /nombre puedo poner lo que quiera, no tiene que ser '/'
 
+//Rutas de API V1
+app.use('/api/v1/user', apiUsers); //registro de la ruta
 
 
 // catch 404 and forward to error handler
