@@ -5,7 +5,18 @@ var router = express.Router();
 var mongoose = require('mongoose'); 
 
 var User = mongoose.model('User'); // pido el modelo
+var basicAuth=require('basic-auth'); //nos devuelve una función en vez de un objeto
 
+router.use(function(req, resp, next){ // middleware con el que controlaré la ocupación	
+	var user = basicAuth(req);
+	console.log(user);
+	if(!user || user.name !== 'admin' || user.pass !== 'pass'){ // no nos han mandado usuario
+		resp.set("WWW-Authenticate","Basic realm=Authorization Required"); //pone algo en la cabecera de la respuesta, SIN ENVIARLA AÚN
+		resp.send(401); //401="necesita autorización"
+		return;
+	}
+	next();
+});
 
 /* GET users listing. */
 
