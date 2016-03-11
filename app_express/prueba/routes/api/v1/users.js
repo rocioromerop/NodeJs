@@ -8,11 +8,11 @@ var User = mongoose.model('User'); // pido el modelo
 
 var auth = require("../../../lib/auth");
 
-router.use(auth("admin", "pass2")); 
+//router.use(auth("admin", "pass2")); el router está sin autenticación
 
 /* GET users listing. */
 
-router.get('/', function(req, res) {
+router.get('/', auth('admin', 'pass2'), function(req, res) { // Ahora sólo el get necesita autorización (Que es un middleware)
 
 	var sort = req.query.sort || 'name';
 
